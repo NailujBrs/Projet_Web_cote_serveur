@@ -19,26 +19,44 @@ class theses
     private $publication_date;
     private $maj_date;
 
-
-    public function __construct()
+    /**
+     * @param $author
+     * @param $author_id
+     * @param $title
+     * @param $these_director
+     * @param $these_director_id
+     * @param $establishment
+     * @param $establishment_id
+     * @param $discipline
+     * @param $status
+     * @param $inscription_date
+     * @param $defense_date
+     * @param $lang
+     * @param $these_id
+     * @param $accessibility
+     * @param $publication_date
+     * @param $maj_date
+     */
+    public function __construct($author, $author_id, $title, $these_director, $these_director_id, $establishment, $establishment_id, $discipline, $status, $inscription_date, $defense_date, $lang, $these_id, $accessibility, $publication_date, $maj_date)
     {
-        $this->author = null;
-        $this->author_id = null;
-        $this->title = null;
-        $this->these_director = null;
-        $this->these_director_id = null;
-        $this->establishment = null;
-        $this->establishment_id = null;
-        $this->discipline = null;
-        $this->status = null;
-        $this->inscription_date = null;
-        $this->defense_date = null;
-        $this->lang = null;
-        $this->these_id = null;
-        $this->accessibility = null;
-        $this->publication_date = null;
-        $this->maj_date = null;
+        $this->author = $author;
+        $this->author_id = $author_id;
+        $this->title = $title;
+        $this->these_director = $these_director;
+        $this->these_director_id = $these_director_id;
+        $this->establishment = $establishment;
+        $this->establishment_id = $establishment_id;
+        $this->discipline = $discipline;
+        $this->status = $status;
+        $this->inscription_date = $inscription_date;
+        $this->defense_date = $defense_date;
+        $this->lang = $lang;
+        $this->these_id = $these_id;
+        $this->accessibility = $accessibility;
+        $this->publication_date = $publication_date;
+        $this->maj_date = $maj_date;
     }
+
 
     /**
      * @return mixed
