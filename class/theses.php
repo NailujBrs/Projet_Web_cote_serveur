@@ -5,8 +5,7 @@ class theses
     private $author;
     private $author_id;
     private $title;
-    private $these_director_name;
-    private $these_director_surname;
+    private $these_director;
     private $these_director_id;
     private $establishment;
     private $establishment_id;
@@ -16,7 +15,7 @@ class theses
     private $defense_date;
     private $lang;
     private $these_id;
-    private $accesibility;
+    private $accessibility;
     private $publication_date;
     private $maj_date;
 
@@ -26,8 +25,7 @@ class theses
         $this->author = null;
         $this->author_id = null;
         $this->title = null;
-        $this->these_director_name = null;
-        $this->these_director_surname = null;
+        $this->these_director = null;
         $this->these_director_id = null;
         $this->establishment = null;
         $this->establishment_id = null;
@@ -37,7 +35,7 @@ class theses
         $this->defense_date = null;
         $this->lang = null;
         $this->these_id = null;
-        $this->accesibility = null;
+        $this->accessibility = null;
         $this->publication_date = null;
         $this->maj_date = null;
     }
@@ -270,17 +268,17 @@ class theses
     /**
      * @return mixed
      */
-    public function getAccesibility()
+    public function getAccessibility()
     {
-        return $this->accesibility;
+        return $this->accessibility;
     }
 
     /**
-     * @param mixed $accesibility
+     * @param mixed $accessibility
      */
-    public function setAccesibility($accesibility)
+    public function setAccessibility($accessibility)
     {
-        $this->accesibility = $accesibility;
+        $this->accessibility = $accessibility;
     }
 
     /**
