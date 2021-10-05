@@ -58,7 +58,6 @@ class theses
         if (!empty($maj_date)) $this->maj_date = $maj_date;
     }
 
-
     /**
      * @return mixed
      */
@@ -336,28 +335,76 @@ class theses
                            :id_these_director ,:establishment ,:id_establishment ,:discipline ,
                            :status ,:inscription_date ,:defense_date ,:lang ,:accesibility ,
                            :publication_date ,:maj_date);";
-        $requete = $db->prepare($sql);
+        $request = $db->prepare($sql);
 
-        $requete->bindParam('id_these', $this->these_id, PDO::PARAM_STR, 40);
-        $requete->bindParam('author', $this->author, PDO::PARAM_STR, 120);
-        $requete->bindParam('id_author', $this->author_id, PDO::PARAM_STR, 40);
-        $requete->bindParam('title', $this->title, PDO::PARAM_STR, 500);
-        $requete->bindParam('these_director', $this->these_director, PDO::PARAM_STR, 300);
-        $requete->bindParam('id_these_director', $this->these_director_id, PDO::PARAM_STR, 80);
-        $requete->bindParam('establishment', $this->establishment, PDO::PARAM_STR, 150);
-        $requete->bindParam('id_establishment', $this->establishment_id, PDO::PARAM_STR, 40);
-        $requete->bindParam('discipline', $this->discipline, PDO::PARAM_STR, 150);
-        $requete->bindParam('status', $this->status, PDO::PARAM_BOOL);
-        $requete->bindParam('inscription_date', $this->inscription_date, PDO::PARAM_STR, 10);
-        $requete->bindParam('defense_date', $this->defense_date, PDO::PARAM_STR, 10);
-        $requete->bindParam('lang', $this->lang, PDO::PARAM_STR, 10);
-        $requete->bindParam('accesibility', $this->accessibility, PDO::PARAM_BOOL);
-        $requete->bindParam('publication_date', $this->publication_date, PDO::PARAM_STR, 10);
-        $requete->bindParam('maj_date', $this->maj_date, PDO::PARAM_STR, 10);
+        $request->bindParam('id_these', $this->these_id, PDO::PARAM_STR, 40);
+        $request->bindParam('author', $this->author, PDO::PARAM_STR, 120);
+        $request->bindParam('id_author', $this->author_id, PDO::PARAM_STR, 40);
+        $request->bindParam('title', $this->title, PDO::PARAM_STR, 500);
+        $request->bindParam('these_director', $this->these_director, PDO::PARAM_STR, 300);
+        $request->bindParam('id_these_director', $this->these_director_id, PDO::PARAM_STR, 80);
+        $request->bindParam('establishment', $this->establishment, PDO::PARAM_STR, 150);
+        $request->bindParam('id_establishment', $this->establishment_id, PDO::PARAM_STR, 40);
+        $request->bindParam('discipline', $this->discipline, PDO::PARAM_STR, 150);
+        $request->bindParam('status', $this->status, PDO::PARAM_BOOL);
+        $request->bindParam('inscription_date', $this->inscription_date, PDO::PARAM_STR, 10);
+        $request->bindParam('defense_date', $this->defense_date, PDO::PARAM_STR, 10);
+        $request->bindParam('lang', $this->lang, PDO::PARAM_STR, 10);
+        $request->bindParam('accesibility', $this->accessibility, PDO::PARAM_BOOL);
+        $request->bindParam('publication_date', $this->publication_date, PDO::PARAM_STR, 10);
+        $request->bindParam('maj_date', $this->maj_date, PDO::PARAM_STR, 10);
 
-        $requete->execute();
+        $request->execute();
     }
 
+    public function load($id) {
+        $cnx = new connexion();
+        $db = $cnx->getCnx();
+        $sql = "SELECT * FROM Theses where id_these='".$id."';";
+
+        $result = $db->query($sql);
+
+        while ($line = $result->fetch()) {
+            echo "ID_These = ".$line["id_these"]."; Author = ".$line['author'];
+            if ($line['id_author'] != NULL) {
+                     echo "; ID_Author = ".$line['id_author']."; Title = ".$line['title']."; These_Director = ".$line['these_director'];
+            } else {
+                echo "; Title = ".$line['title']."; These_Director = ".$line['these_director'];
+            }
+            if ($line['id_these_director'] !=NULL) {
+                "; ID_These_Director = ".($line['id_these_director'])."; Establishment = ".$line['establishment'];
+            } else {
+                echo "; Establishment = ".$line['establishment'];
+            }
+            if ($line['id_establishment'] != NULL) {
+                echo "; ID_Establishment = ".$line['id_establishment']."; Discipline = ".$line['discipline'];
+            } else {
+                "; Discipline = ".$line['discipline'];
+            }
+            if ($line['status'] = 0) {
+                echo "; Status = EnCours";
+            } else {
+                echo "; Status = Soutenue";
+            }
+            if ($line['inscription_date'] != NULL) {
+                echo "; Inscription_Date = ".$line['inscription_date'];
+            }
+            if ($line['defense_date']!=NULL){
+                echo "; Defense_Date = ".$line['defense_date'];
+            }
+            if ($line['lang']!=NULL) {
+                echo "; These_Language = ".$line['lang'];
+            }
+            if ($line['accesibility'] = 0) {
+                echo "; Accesibility = NO; Publication_Date = ".$line['publication_date']."; Last MAJ = ".
+                    $line['maj_date'];
+            } else {
+                echo "; Accesibility = YES; Publication_Date = ".$line['publication_date']."; Last MAJ = ".
+                    $line['maj_date'];
+            }
+
+        }
+    }
 }
 
 ?>

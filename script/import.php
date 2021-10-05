@@ -15,5 +15,7 @@ while (!feof($file)) {
 
 }
 fclose($file);
+$these2 = new theses(null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+$these->load("s10083");
 
 ?>
