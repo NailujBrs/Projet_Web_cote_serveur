@@ -20,6 +20,28 @@ class theses
     private $publication_date;
     private $maj_date;
 
+
+    public function __construct()
+    {
+        $this->author = null;
+        $this->author_id = null;
+        $this->title = null;
+        $this->these_director_name = null;
+        $this->these_director_surname = null;
+        $this->these_director_id = null;
+        $this->establishment = null;
+        $this->establishment_id = null;
+        $this->discipline = null;
+        $this->status = null;
+        $this->inscription_date = null;
+        $this->defense_date = null;
+        $this->lang = null;
+        $this->these_id = null;
+        $this->accesibility = null;
+        $this->publication_date = null;
+        $this->maj_date = null;
+    }
+
     /**
      * @return mixed
      */
@@ -292,7 +314,6 @@ class theses
     {
         $this->maj_date = $maj_date;
     }
-
 
 }
 ?>
