@@ -356,8 +356,8 @@ class theses
         $requete->bindParam('maj_date', $this->maj_date, PDO::PARAM_STR, 10);
 
         $requete->execute();
-
     }
+
 }
 
 ?>
