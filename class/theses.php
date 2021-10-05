@@ -1,5 +1,5 @@
 <?php
-
+include ("connexion.php");
 class theses
 {
     private $author;
@@ -193,7 +193,10 @@ class theses
      */
     public function getStatus()
     {
-        return $this->status;
+        if ($this->status == "enCours") {
+            return 0;
+        }
+        return 1;
     }
 
     /**
@@ -273,7 +276,10 @@ class theses
      */
     public function getAccessibility()
     {
-        return $this->accessibility;
+        if ($this->accessibility == "non") {
+            return 0;
+        }
+        return 1;
     }
 
     /**
@@ -317,11 +323,31 @@ class theses
     }
 
     public function afficher() {
-        echo $this->getAuthor()." ".$this->getAuthorId()." ".$this->getTitle()." ".$this->getTheseDirector()." ".$this->getTheseDirectorId()." ".$this->getEstablishment()." ".$this->getEstablishmentId()." ".$this->getDiscipline()." ".$this->getStatus()." ".$this->getInscriptionDate()." ".$this->getDefenseDate()." ".$this->getLang()." ".$this->getTheseId()." ".$this->getPublicationDate()." ".$this->getMajDate()."<br>";
+        echo $this->getAuthor()." ".$this->getAuthorId()." ".$this->getTitle()." ".$this->getTheseDirector()." ".$this->getTheseDirectorId()." ".$this->getEstablishment()." ".$this->getEstablishmentId()." ".$this->getDiscipline()." ".$this->getStatus()." ".$this->getInscriptionDate()." ".$this->getDefenseDate()." ".$this->getLang()." ".$this->getTheseId()." ".$this->getAccessibility()." ".$this->getPublicationDate()." ".$this->getMajDate()."<br>";
     }
 
     public function save() {
+        $cnx = new connexion();
+        $requete = ($cnx->getCnx())->prepare("INSERT INTO Theses VALUES (id_these=? ,author=? ,id_author=? ,title=? ,these_director=? ,id_these_directo? ,establishment=? ,id_establishment=? ,discipline=? ,status=? ,inscription_date=? ,defense_date=? ,lang=? ,accesibility=? ,publication_date=? ,maj_date=?)");
 
+        $requete->bindParam(1,$this->getTheseId(),PDO::PARAM_STR);
+        $requete->bindParam(2,$this->getAuthor(),PDO::PARAM_STR);
+        $requete->bindParam(3,$this->getAuthorId(),PDO::PARAM_STR);
+        $requete->bindParam(4,$this->getTitle(),PDO::PARAM_STR);
+        $requete->bindParam(5,$this->getTheseDirector(),PDO::PARAM_STR);
+        $requete->bindParam(6,$this->getTheseDirectorId(),PDO::PARAM_STR);
+        $requete->bindParam(7,$this->getEstablishment(),PDO::PARAM_STR);
+        $requete->bindParam(8,$this->getEstablishmentId(),PDO::PARAM_STR);
+        $requete->bindParam(9,$this->getDiscipline(),PDO::PARAM_STR);
+        $requete->bindParam(10,$this->getStatus(),PDO::PARAM_BOOL);
+        $requete->bindParam(11,$this->getInscriptionDate(),PDO::PARAM_STR);
+        $requete->bindParam(12,$this->getDefenseDate(),PDO::PARAM_STR);
+        $requete->bindParam(13,$this->getLang(),PDO::PARAM_STR);
+        $requete->bindParam(14,$this->getAccessibility(),PDO::PARAM_BOOL);
+        $requete->bindParam(15,$this->getPublicationDate(),PDO::PARAM_STR);
+        $requete->bindParam(16,$this->getMajDate(),PDO::PARAM_STR);
+
+        $requete->execute();
     }
 }
 ?>
