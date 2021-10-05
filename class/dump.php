@@ -1,6 +1,6 @@
 <?php
 
-class dumb
+class dump
 {
 
 }
