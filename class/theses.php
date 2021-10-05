@@ -109,34 +109,19 @@ class theses
     /**
      * @return mixed
      */
-    public function getTheseDirectorName()
+    public function getTheseDirector()
     {
-        return $this->these_director_name;
+        return $this->these_director;
     }
 
     /**
-     * @param mixed $these_director_name
+     * @param mixed $these_director
      */
-    public function setTheseDirectorName($these_director_name)
+    public function setTheseDirector($these_director)
     {
-        $this->these_director_name = $these_director_name;
+        $this->these_director = $these_director;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getTheseDirectorSurname()
-    {
-        return $this->these_director_surname;
-    }
-
-    /**
-     * @param mixed $these_director_surname
-     */
-    public function setTheseDirectorSurname($these_director_surname)
-    {
-        $this->these_director_surname = $these_director_surname;
-    }
 
 
     /**
@@ -331,5 +316,8 @@ class theses
         $this->maj_date = $maj_date;
     }
 
+    public function afficher() {
+        echo $this->getAuthor()+""+$this->getAuthorId()+""+$this->getTitle()+""+$this->getTheseDirector()+""+$this->getTheseDirectorId()+""+$this->getEstablishment()+""+$this->getEstablishmentId()+""+$this->getDiscipline()+""+$this->getStatus()+""+$this->getInscriptionDate()+""+$this->getDefenseDate()+""+$this->getLang()+""+$this->getTheseId()+""+$this->getAccessibility()+""+$this->getPublicationDate()+""+$this->getMajDate();
+    }
 }
 ?>
