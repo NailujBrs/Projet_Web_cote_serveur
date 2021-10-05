@@ -317,7 +317,11 @@ class theses
     }
 
     public function afficher() {
-        echo $this->getAuthor()+""+$this->getAuthorId()+""+$this->getTitle()+""+$this->getTheseDirector()+""+$this->getTheseDirectorId()+""+$this->getEstablishment()+""+$this->getEstablishmentId()+""+$this->getDiscipline()+""+$this->getStatus()+""+$this->getInscriptionDate()+""+$this->getDefenseDate()+""+$this->getLang()+""+$this->getTheseId()+""+$this->getAccessibility()+""+$this->getPublicationDate()+""+$this->getMajDate();
+        echo $this->getAuthor()." ".$this->getAuthorId()." ".$this->getTitle()." ".$this->getTheseDirector()." ".$this->getTheseDirectorId()." ".$this->getEstablishment()." ".$this->getEstablishmentId()." ".$this->getDiscipline()." ".$this->getStatus()." ".$this->getInscriptionDate()." ".$this->getDefenseDate()." ".$this->getLang()." ".$this->getTheseId()." ".$this->getPublicationDate()." ".$this->getMajDate()."<br>";
+    }
+
+    public function save() {
+
     }
 }
 ?>
