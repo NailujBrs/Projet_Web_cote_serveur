@@ -3,10 +3,10 @@
 /*
  * création d'objet PDO de la connexion qui sera représenté par la variable $cnx
  */
-	$user =  'jbors';
-	$pass =  'PostgreSQL';
+	$user =  'julian.bors';
+	$pass =  'Buffon1303';
 try {
-    $cnx = new PDO('pgsql:host=sqletud.u-pem.fr;dbname=jbors_db',$user,$pass);  
+    $cnx = new PDO('mysql:host=sqletud.u-pem.fr;dbname=julia.bors_db',$user,$pass);
 }
 catch (PDOException $e) {
     echo "ERREUR : La connexion a échouée";
