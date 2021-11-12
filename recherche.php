@@ -14,7 +14,7 @@ $db = $cnx->getCnx();
 
 if (isset($_POST["search"]) AND !empty($_POST['search'])) {
     $mot = "%".$_POST["search"]."%";
-    $sql = "SELECT title FROM Theses WHERE title LIKE :mot";
+    $sql = "SELECT title FROM Theses WHERE title LIKE :mot OR author LIKE :mot";
     $request = $db->prepare($sql);
 
     $request->bindParam('mot',$mot,PDO::PARAM_STR,500);
@@ -29,6 +29,6 @@ if (isset($_POST["search"]) AND !empty($_POST['search'])) {
 }
 
 else if (empty($_POST['search'])) {
-    header("Location:index.html");
+    echo "<p>Aucun résultat pour votre recherche...</p>";
 }
 ?>

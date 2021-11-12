@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="5bca76a9-30b8-4427-9442-2a202bc63dff" name="umlv" url="http://etudiant.u-pem.fr/~julian.bors">
+      <webServer id="5bca76a9-30b8-4427-9442-2a202bc63dff" name="umlv" url="https://etudiant.u-pem.fr/~julian.bors/Projet_web_cote_serveur/">
         <fileTransfer rootFolder="/mnt/traban_home/3in2/julian.bors/WWW" host="etudiant.u-pem.fr" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
