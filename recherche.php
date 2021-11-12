@@ -3,7 +3,7 @@ echo "<link rel=\"stylesheet\" href=\"css/recherche_search.css\">
 <title>Recherche</title>
 <form action=\"recherche.php\" name=\"search\" method=\"post\" class=\"search\">
     <div>
-        <input type=\"text\" name=\"search\"  class=\"search_bar\">
+        <input type=\"text\" name=\"search\"  class=\"search_bar\" placeholder=\"Recherche...\">
         <button type=\"submit\" class=\"btn_rechercher\">Rechercher</button>
     </div>
 </form>";
