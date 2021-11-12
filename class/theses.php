@@ -369,17 +369,17 @@ class theses
             if ($line['id_author'] != NULL) {
                      echo "; ID_Author = ".$line['id_author']."; Title = ".$line['title']."; These_Director = ".$line['these_director'];
             } else {
-                echo "; Title = ".$line['title']."; These_Director = ".$line['these_director'];
+                echo "; ID_Author = null; Title = ".$line['title']."; These_Director = ".$line['these_director'];
             }
             if ($line['id_these_director'] !=NULL) {
                 "; ID_These_Director = ".($line['id_these_director'])."; Establishment = ".$line['establishment'];
             } else {
-                echo "; Establishment = ".$line['establishment'];
+                "; ID_These_Director = null; Establishment = ".$line['establishment'];
             }
             if ($line['id_establishment'] != NULL) {
                 echo "; ID_Establishment = ".$line['id_establishment']."; Discipline = ".$line['discipline'];
             } else {
-                "; Discipline = ".$line['discipline'];
+                echo "; ID_Establishment = null; Discipline = ".$line['discipline'];
             }
             if ($line['status'] = 0) {
                 echo "; Status = EnCours";
@@ -388,12 +388,18 @@ class theses
             }
             if ($line['inscription_date'] != NULL) {
                 echo "; Inscription_Date = ".$line['inscription_date'];
+            } else {
+                echo "; Inscription_Date = null";
             }
             if ($line['defense_date']!=NULL){
                 echo "; Defense_Date = ".$line['defense_date'];
+            } else {
+                echo "; Defense_Date = null";
             }
             if ($line['lang']!=NULL) {
                 echo "; These_Language = ".$line['lang'];
+            } else {
+                echo "; These_Language = null";
             }
             if ($line['accesibility'] = 0) {
                 echo "; Accesibility = NO; Publication_Date = ".$line['publication_date']."; Last MAJ = ".
