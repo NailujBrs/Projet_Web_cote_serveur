@@ -359,51 +359,32 @@ class theses
 
     public function load($id) {
         $cnx = new connexion();
-        $db = $cnx->getCnx();
-        $sql = "SELECT * FROM Theses where id_these='".$id."';";
+        $db = $cnx ->getCnx();
 
-        $result = $db->query($sql);
+        $requete = $db->prepare('SELECT * FROM these where id_these = :id LIMIT 1');
 
-        while ($line = $result->fetch()) {
-            echo "ID_These = ".$line["id_these"]."; Author = ".$line['author'];
-            if ($line['id_author'] != NULL) {
-                     echo "; ID_Author = ".$line['id_author']."; Title = ".$line['title']."; These_Director = ".$line['these_director'];
-            } else {
-                echo "; Title = ".$line['title']."; These_Director = ".$line['these_director'];
-            }
-            if ($line['id_these_director'] !=NULL) {
-                "; ID_These_Director = ".($line['id_these_director'])."; Establishment = ".$line['establishment'];
-            } else {
-                echo "; Establishment = ".$line['establishment'];
-            }
-            if ($line['id_establishment'] != NULL) {
-                echo "; ID_Establishment = ".$line['id_establishment']."; Discipline = ".$line['discipline'];
-            } else {
-                "; Discipline = ".$line['discipline'];
-            }
-            if ($line['status'] = 0) {
-                echo "; Status = EnCours";
-            } else {
-                echo "; Status = Soutenue";
-            }
-            if ($line['inscription_date'] != NULL) {
-                echo "; Inscription_Date = ".$line['inscription_date'];
-            }
-            if ($line['defense_date']!=NULL){
-                echo "; Defense_Date = ".$line['defense_date'];
-            }
-            if ($line['lang']!=NULL) {
-                echo "; These_Language = ".$line['lang'];
-            }
-            if ($line['accesibility'] = 0) {
-                echo "; Accesibility = NO; Publication_Date = ".$line['publication_date']."; Last MAJ = ".
-                    $line['maj_date'];
-            } else {
-                echo "; Accesibility = YES; Publication_Date = ".$line['publication_date']."; Last MAJ = ".
-                    $line['maj_date'];
-            }
+        $requete->bindParam('id',$id,PDO::PARAM_STR,20);
 
-        }
+        $requete->execute();
+        $these = $requete->fetch();
+
+        $this->setTheseId($id);
+        $this->setAuteur($these['auteur']);
+        $this->setIdAuteur($these['id_auteur']);
+        $this->setTitre($these['titre']);
+        $this->setTheseDirecteur($these['these_directeur']);
+        $this->setIdDirecteur($these['id_directeur']);
+        $this->setEtabSoutenance($these['etab_soutenance']);
+        $this->setIdEtab($these['id_etab']);
+        $this->setDicipline($these['dicipline']);
+        $this->setStatut($these['statut']);
+        $this->setDateInscription($these['date_inscription']);
+        $this->setDateSoutenance($these['date_soutenance']);
+        $this->setLangThese($these['lang_these']);
+        $this->setOnLigne($these['onLigne']);
+        $this->setPublication($these['publication']);
+        $this->setMiseAjour($these['miseAjour']);
+
     }
 }
 
