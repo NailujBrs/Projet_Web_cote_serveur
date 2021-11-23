@@ -1,10 +1,31 @@
+* {
+    margin:0;
+}
+.search {
+    text-align: center;
+    margin-bottom: 3%;
+}
 .search_bar {
-    border-radius: 3%;
-    width: 250px;
-    height: 20px;
+    margin: 0 0 0 0;
+    border-radius: 2em;
+    width: 30%;
+    height: 30px;
     border-color: dodgerblue;
 }
 .btn_rechercher {
     background-color: dodgerblue;
-    border-radius: 3%;
+    border-radius: 1em;
+    color: white;
+    height: 30px;
+}
+
+.barre_accueil {
+    background: lightgrey;
+    padding: 1.8%;
+}
+
+.logo {
+    width: 25%;
+    height: 20%;
+    margin: 0 0 0 37%;
 }

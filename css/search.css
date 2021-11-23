@@ -5,20 +5,28 @@
     text-align: center;
 }
 .search_bar {
-    margin: 20% 0 0 0%;
-    border-radius: 3%;
-    width: 25%;
-    height: 2%;
+    margin: 0 0 0 0;
+    border-radius: 2em;
+    width: 30%;
+    height: 30px;
     border-color: dodgerblue;
 }
 .btn_rechercher {
     background-color: dodgerblue;
-    border-radius: 3%;
+    border-radius: 1em;
+    color: white;
+    height: 30px;
 }
 
 .barre_accueil {
     background: lightgrey;
     padding: 1.8%;
+}
+
+.logo {
+    width: 25%;
+    height: 20%;
+    margin: 0 0 0 37%;
 }
 
 /*#interrogation {
@@ -31,16 +39,49 @@
     transform: scale(1.25);
 }*/
 
+/* Pour tablette */
 @media (min-width: 768px) and (max-width: 1388px) {
     .barre_accueil {
         background: lightgrey;
         padding: 3.5%;
     }
+
+    .logo {
+        width: 40%;
+        height: 35%;
+        margin: 3% 0 0 30%;
+    }
+
+    .search_bar {
+        width: 50%;
+        height: 40px;
+    }
+
+    .btn_rechercher {
+        height: 40px;
+    }
 }
 
-@media (max-width: 767px) {
+/* Pour téléphone */
+@media (min-width: 300px) and (max-width: 767px) {
     .barre_accueil {
         background: lightgrey;
-        padding: 5%;
+        padding: 4.5%;
+    }
+
+    .logo {
+        width: 60%;
+        height: 50%;
+        margin: 3% 0 0 20%;
+    }
+
+    .search_bar {
+        width: 60%;
+        height: 50px;
+    }
+
+    .btn_rechercher {
+        height: 50px;
+        width: 10%;
     }
 }
