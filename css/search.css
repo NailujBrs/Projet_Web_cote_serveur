@@ -1,3 +1,7 @@
+* {
+    margin:0;
+    padding: 0;
+}
 .search {
     text-align: center;
 }
@@ -11,4 +15,39 @@
 .btn_rechercher {
     background-color: dodgerblue;
     border-radius: 3%;
+}
+
+.barre_accueil {
+    background: lightgrey;
+    height: 40px;
+    padding: 5px 0 0 0;
+}
+
+.conteneur_accueil {
+    width: 960px;
+    padding: 0;
+    margin: 0 auto;
+}
+#help {
+    float: left;
+    background: white;
+    border: 1px solid #ddd;
+    margin: 0px 0px 0px 7px;
+    padding: 4px 2px 2px 4px;
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    width: 26px;
+    height: 27px;
+}
+
+#interrogation {
+    height: 25px;
+    width: 25px;
+}
+
+.anim:hover {
+    transition: all 0.5s;
+    transform: scale(1.25);
 }
