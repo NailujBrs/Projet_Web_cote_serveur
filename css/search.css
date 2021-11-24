@@ -1,26 +1,37 @@
 * {
     margin:0;
 }
-.search {
-    text-align: center;
-}
-.search_bar {
-    margin: 0 0 0 0;
-    border-radius: 2em;
-    width: 30%;
-    height: 30px;
-    border-color: dodgerblue;
-}
-.btn_rechercher {
-    background-color: dodgerblue;
-    border-radius: 1em;
-    color: white;
-    height: 30px;
-}
-
 .barre_accueil {
     background: lightgrey;
     padding: 1.8%;
+}
+
+.conteneur_accueil {
+    float: right;
+    margin: -1% 20% 0 0;
+}
+
+#help {
+    float: left;
+    background: white;
+    border: 2px solid black;
+    border-radius: 1em;
+    -o-border-radius: 1em;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    width: 27px;
+    height: 27px;
+}
+
+#interrogation {
+    width: 90%;
+    margin: 6% 0 0 6%;
+
+}
+
+.anim:hover {
+    transition: all 0.5s;
+    transform: scale(1.25);
 }
 
 .logo {
@@ -29,18 +40,32 @@
     margin: 0 0 0 37%;
 }
 
-/*#interrogation {
-    height: 150%;
-    width: 150%;
+.search {
+    text-align: center;
 }
 
-.anim:hover {
-    transition: all 0.5s;
-    transform: scale(1.25);
-}*/
+.search_bar {
+    margin: 0 0 0 0;
+    border-radius: 2rem;
+    width: 30rem;
+    height: 2rem;
+    border-color: dodgerblue;
+}
+
+.btn_rechercher {
+    background-color: dodgerblue;
+    border-radius: 1em;
+    color: white;
+    height: 2rem;
+}
+
+
+
+/* A Modifier */
+
 
 /* Pour tablette */
-@media (min-width: 768px) and (max-width: 1388px) {
+/*@media (min-width: 768px) and (max-width: 1388px) {
     .barre_accueil {
         background: lightgrey;
         padding: 3.5%;
@@ -60,28 +85,28 @@
     .btn_rechercher {
         height: 40px;
     }
-}
+}*/
 
 /* Pour téléphone */
-@media (min-width: 300px) and (max-width: 767px) {
+/*@media (min-width: 300px) and (max-width: 767px) {
     .barre_accueil {
         background: lightgrey;
-        padding: 4.5%;
+        padding: 7%;
     }
 
     .logo {
-        width: 60%;
-        height: 50%;
+        width: 70%;
+        height: 60%;
         margin: 3% 0 0 20%;
     }
 
     .search_bar {
-        width: 60%;
-        height: 50px;
+        width: 70%;
+        height: 65px;
     }
 
     .btn_rechercher {
-        height: 50px;
-        width: 10%;
+        height: 65px;
+        width: 15%;
     }
-}
+}*/

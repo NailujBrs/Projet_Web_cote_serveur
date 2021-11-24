@@ -2,10 +2,6 @@
 echo "<!DOCTYPE html>
 <link rel=\"stylesheet\" href=\"css/recherche_search.css\">
 <title>Recherche</title>
-<div class=\"barre_accueil\">
-        <div class=\"conteneur_accueil\">
-        </div>
-    </div>
     <div>
         <img src=\"img/newLogo.png\" class=\"logo\"/>
     </div>
