@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <link rel="stylesheet" href="css/search.css">
+    <title>Theses</title>
+</head>
+<body>
+<div class="barre_accueil">
+    <div class="conteneur_accueil">
+        <div id="langFR">
+            <a href="index.html" title="French">
+                <img src="img/fr.png" alt="Drapeau Français" id="drapFR" class="animD">
+            </a>
+        </div>
+        <div id="langEN">
+            <a href="indexEN.html" title="English">
+                <img src="img/en.png" alt="Drapeau Anglais" id="drapEN" class="animD">
+            </a>
+        </div>
+        <div id="help">
+            <a href="http://documentation.abes.fr/aidethesesfr/index.html" title="Documentation">
+                <img src="img/interrogation.jpg" alt="Point d'inetrrogation" id="interrogation" class="anim">
+            </a>
+        </div>
+    </div>
+</div>
+<div>
+    <img src="img/newLogo.png" class="logo"/>
+</div>
+<div>
+    <form action="recherche.php" name="search" method="post" class="search">
+        <div>
+            <input type="text" name="search"  class="search_bar" placeholder="Search...">
+            <button type="submit" class="btn_rechercher">Search</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

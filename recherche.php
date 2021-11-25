@@ -1,9 +1,16 @@
 <?php
 echo "<!DOCTYPE html>
-<link rel=\"stylesheet\" href=\"css/recherche_search.css\">
-<title>Recherche</title>
+<html lang=\"fr\">
+<head>
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0\"/>
+    <link rel=\"stylesheet\" href=\"css/recherche_search.css\">
+    <title>Theses</title>
+</head>
     <div>
-        <img src=\"img/newLogo.png\" class=\"logo\"/>
+        <a href='index.html' title='Page accueil'>
+            <img src=\"img/newLogo.png\" class=\"logo\"/>
+        </a>
     </div>
     <div>
         <form action=\"recherche.php\" name=\"search\" method=\"post\" class=\"search\">
@@ -29,7 +36,7 @@ if (isset($_POST["search"]) AND !empty($_POST['search'])) {
 
     echo "<ul>";
     while ($line = $request->fetch()) {
-        echo "<li>".$line['title']."</li>";
+        echo "<li class='titre'>".$line['title']."</li><br>";
     }
     echo "</ul>";
 }

@@ -2,30 +2,60 @@
     margin:0;
 }
 .barre_accueil {
-    background: lightgrey;
-    padding: 1.8%;
+    background: #e7e7e7;
+    padding: 2rem;
 }
 
 .conteneur_accueil {
     float: right;
-    margin: -1% 20% 0 0;
+    margin: -1rem 20rem 0 0;
+}
+
+#langFR {
+    float: left;
+    background: white;
+    border-radius: 0.5em 0 0 0.5em;
+    -o-border-radius: 0.5em 0 0 0.5em;
+    -moz-border-radius: 0.5em 0 0 0.5em;
+    -webkit-border-radius: 0.5em 0 0 0.5em;
+    width: 2rem;
+    height: 2.2rem;
+}
+#langEN {
+    float: left;
+    background: white;
+    border-radius: 0 0.5em 0.5em 0;
+    -o-border-radius: 0 0.5em 0.5em 0;
+    -moz-border-radius: 0 0.5em 0.5em 0;
+    -webkit-border-radius: 0 0.5em 0.5em 0;
+    width: 2rem;
+    height: 2.2rem;
+    margin: 0 1rem 0 0;
+}
+#drapFR {
+    width: 1.57rem;
+    margin: 0.3rem 0 0 0.3rem;
+}
+
+#drapEN {
+    width: 2.8rem;
+    margin: -0.3rem 0 0 -0.4rem;
 }
 
 #help {
-    float: left;
+    float: right;
     background: white;
-    border: 2px solid black;
-    border-radius: 1em;
-    -o-border-radius: 1em;
-    -moz-border-radius: 1em;
-    -webkit-border-radius: 1em;
-    width: 27px;
-    height: 27px;
+    border-radius: 0.5em;
+    -o-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    -webkit-border-radius: 0.5em;
+    width: 2rem;
+    height: 2.2rem;
 }
 
 #interrogation {
-    width: 90%;
-    margin: 6% 0 0 6%;
+    width: 1.9rem;
+    margin: 0.15rem 0 0 0.1rem;
 
 }
 
@@ -34,10 +64,15 @@
     transform: scale(1.25);
 }
 
+.animD:hover {
+    transition: all 0.5s;
+    transform: scale(1.15);
+}
+
 .logo {
-    width: 25%;
-    height: 20%;
-    margin: 0 0 0 37%;
+    width: 35rem;
+    height: 13rem;
+    margin: 0.5rem 0 0 42rem;
 }
 
 .search {
@@ -45,10 +80,9 @@
 }
 
 .search_bar {
-    margin: 0 0 0 0;
     border-radius: 2rem;
-    width: 30rem;
-    height: 2rem;
+    width: 40rem;
+    height: 3rem;
     border-color: dodgerblue;
 }
 
@@ -56,57 +90,94 @@
     background-color: dodgerblue;
     border-radius: 1em;
     color: white;
-    height: 2rem;
+    height: 3.5rem;
+    width: 6rem;
 }
 
+/* For phone with small width */
+@media (max-width: 400px) {
+    .barre_accueil {
+        background: #e7e7e7;
+        padding: 2rem;
+    }
 
+    .conteneur_accueil {
+        float: right;
+        margin: -1rem 0 0 10rem;
+    }
+
+    .logo {
+        width: 20rem;
+        height: 7rem;
+        margin: 1rem 0 0 2rem;
+    }
+
+    .search_bar {
+        width: 20rem;
+        height: 2.5rem;
+    }
+
+    .btn_rechercher {
+        height: 2.5rem;
+        width: 7rem;
+        margin: 1rem 0 0 0;
+    }
+}
+
+/* For phone with width higher than 400px*/
+@media (min-width: 401px) and (max-width: 599px) {
+    .barre_accueil {
+        background: #e7e7e7;
+        padding: 2rem;
+    }
+
+    .conteneur_accueil {
+        float: right;
+        margin: -1rem 0 0 10rem;
+    }
+
+    .logo {
+        width: 20rem;
+        height: 7rem;
+        margin: 0.5rem 0 0 3rem;
+    }
+
+    .search_bar {
+        width: 22rem;
+        height: 2.5rem;
+    }
+
+    .btn_rechercher {
+        height: 2.5rem;
+        width: 7rem;
+        margin: 1rem 0 0 0;
+    }
+}
 
 /* A Modifier */
 
 
 /* Pour tablette */
-/*@media (min-width: 768px) and (max-width: 1388px) {
+/*@media (min-width: 600px) and (max-width: 1388px) {
     .barre_accueil {
-        background: lightgrey;
-        padding: 3.5%;
+        background: #e7e7e7;
+        padding: 3rem;
     }
 
     .logo {
-        width: 40%;
-        height: 35%;
-        margin: 3% 0 0 30%;
+        height: 15rem;
+        margin: 0 0 0 0;
     }
 
     .search_bar {
-        width: 50%;
-        height: 40px;
+        width: 45rem;
+        height: 3rem;
     }
 
+
     .btn_rechercher {
-        height: 40px;
+        height: 4rem;
     }
 }*/
 
-/* Pour téléphone */
-/*@media (min-width: 300px) and (max-width: 767px) {
-    .barre_accueil {
-        background: lightgrey;
-        padding: 7%;
-    }
 
-    .logo {
-        width: 70%;
-        height: 60%;
-        margin: 3% 0 0 20%;
-    }
-
-    .search_bar {
-        width: 70%;
-        height: 65px;
-    }
-
-    .btn_rechercher {
-        height: 65px;
-        width: 15%;
-    }
-}*/
