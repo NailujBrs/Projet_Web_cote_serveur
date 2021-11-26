@@ -27,7 +27,7 @@ $db = $cnx->getCnx();
 
 if (isset($_POST["search"]) AND !empty($_POST['search'])) {
     $mot = "%".$_POST["search"]."%";
-    $sql = "SELECT title FROM Theses WHERE title LIKE :mot OR author LIKE :mot";
+    $sql = "SELECT id_these,title FROM Theses WHERE title LIKE :mot OR author LIKE :mot";
     $request = $db->prepare($sql);
 
     $request->bindParam('mot',$mot,PDO::PARAM_STR,500);
@@ -36,7 +36,7 @@ if (isset($_POST["search"]) AND !empty($_POST['search'])) {
 
     echo "<ul>";
     while ($line = $request->fetch()) {
-        echo "<li class='titre'>".$line['title']."</li><br>";
+        echo "<li class='titre'><a href='https://theses.fr/".$line['id_these']."' target='_blank'>".$line['title']."<a></li><br>";
     }
     echo "</ul>";
 }
