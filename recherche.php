@@ -36,7 +36,7 @@ if (isset($_POST["search"]) AND !empty($_POST['search'])) {
 
     echo "<ul>";
     while ($line = $request->fetch()) {
-        echo "<li class='titre'><a href='https://theses.fr/".$line['id_these']."' target='_blank'>".$line['title']."<a></li><br>";
+        echo "<li class='titre'><a href='https://theses.fr/".$line['id_these']."' target='_blank' class='link'>".$line['title']."<a></li><br>";
     }
     echo "</ul>";
 }

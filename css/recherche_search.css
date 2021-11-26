@@ -26,6 +26,23 @@
     height: 2rem;
 }
 
+.link {
+    color: #0b5db0;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: deepskyblue;
+}
+
+.link:visited {
+    color:purple;
+}
+
+.link:active {
+    color:red;
+}
+
 
 /* For phone with small width */
 @media (max-width: 400px) {
