@@ -10,7 +10,12 @@ class connexion
      */
     public function getCnx()
     {
-        return new PDO('mysql:host=sqletud.u-pem.fr;dbname=julian.bors_db',$this->user,$this->pass);
+        try {
+            return new PDO('mysql:host=sqletud.u-pem.fr;dbname=julian.bors_db',$this->user,$this->pass);
+        }
+        catch (Exception $exception) {
+            echo "Erreur de connexion à la BDD";
+        }
     }
 
 
