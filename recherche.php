@@ -134,7 +134,7 @@ if (isset($_POST["search"])) {
                                             y:".$countPc.",res :".$countResOther."}";
                         }
                         else {
-                            for ($i = 0; $i <$lineAllDisc['cA']-1;$i++) {
+                            for ($i = 0; $i <$lineAllDisc['cA'];$i++) {
                                 echo "{ name: \"".$tabdiscipline[$i]."\",
                                             y:".$tabcount[$i]*100/$lineAllDisc['cA'].",res :".$tabcount[$i]."},";
                             }
