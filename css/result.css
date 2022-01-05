@@ -191,60 +191,29 @@ span {
     background: #f1f7ff;
 }
 
-
-/* For phone with small width */
-@media (max-width: 400px) {
-    .logo {
-        width: 18rem;
-        height: 6rem;
-        margin: 0.5rem 0 0 3rem;
-    }
-
-    .search {
-        margin-bottom: 2rem;
-    }
-    .search_bar {
-        width: 18rem;
-        height: 2rem;
-    }
-
-    .btn_rechercher {
-        height: 2rem;
-        width: 7rem;
-        margin: 0.5rem 0 0 0;
-    }
-
-    .titre {
-        font-size: 14px;
-        margin-right: 1rem;
-    }
+.footer {
+    position:absolute;
+    bottom:5px;
+    width:100%;
+    padding-top:50px;
+    height:50px;
+    text-align: center;
 }
 
-/* For phone with width higher than 400px*/
-@media (min-width: 401px) and (max-width: 599px) {
+.git {
+    width: 50px;
+    height: 50px;
+}
+
+/* Pour PC*/
+@media (min-height: 1280px){
     .logo {
         width: 18rem;
         height: 6rem;
-        margin: 0.5rem 0 0 4rem;
+        margin: 0.5rem 0 0 40rem;
     }
 
     .search {
         margin-bottom: 2rem;
-    }
-
-    .search_bar {
-        width: 20rem;
-        height: 2rem;
-    }
-
-    .btn_rechercher {
-        height: 2rem;
-        width: 7rem;
-        margin: 0.5rem 0 0 0;
-    }
-
-    .titre {
-        font-size: 14px;
-        margin-right: 1rem;
     }
 }

@@ -5,7 +5,7 @@ if (!empty($_POST)) {
     <head>
         <meta charset=\"UTF-8\">
         <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0\"/>
-        <link rel=\"stylesheet\" href=\"css/recherche_search.css\">
+        <link rel=\"stylesheet\" href=\"css/result.css\">
         <script src=\"https://code.highcharts.com/highcharts.js\"></script>
         <script src=\"https://code.highcharts.com/modules/data.js\"></script>
         <script src=\"https://code.highcharts.com/modules/drilldown.js\"></script>
@@ -25,7 +25,8 @@ if (!empty($_POST)) {
                     <button type=\"submit\" class=\"btn_rechercher\">Rechercher<span></span></button>
                 </div>
             </form>
-        </div>";
+        </div>
+        ";
 }
 include ("./class/connexion.php");
 
@@ -142,7 +143,17 @@ if (isset($_POST["search"])) {
                         echo "]
                     }]
                    });</script>";
+            $sqlGraph2 = "SELECT YEAR(`publication_date`) as y , COUNT(`id_these`) as c FROM `Theses` WHERE `title` LIKE :mot OR `author` LIKE :mot GROUP BY YEAR(`publication_dat e`) ORDER BY YEAR(`publication_date`)";
+            $requestGraph2 = $db->prepare($sqlGraph2);
+            $requestGraph2->bindParam('mot',$mot,PDO::PARAM_STR,500);
+            $requestGraph2->execute();
 
+            $Theses = array();
+            $Year = array();
+            while ($lineGraph2 = $requestGraph2->fetch()) {
+                array_push($Year,$lineGraph2['y']);
+                array_push($Theses,$lineGraph2['c']);
+            }
             echo "<figure class=\"highcharts-figure2\">
                     <div id=\"Graph2\"></div>
                   </figure>
@@ -152,7 +163,7 @@ if (isset($_POST["search"])) {
                 type: 'column'
     },
     title: {
-                text: 'Browser market shares. January, 2018'
+                text: 'These par année <br><p style=\"font-size:10px\">Nombre de résultats : ".$lineAllDisc['cA']."</p>'
     },
         accessibility: {
                 announceNewData: { 
@@ -162,12 +173,6 @@ if (isset($_POST["search"])) {
         xAxis: {
                 type: 'category'
     },
-        yAxis: {
-                title: {
-                    text: 'Total percent market share'
-        }
-
-            },
         legend: {
                 enabled: false
     },
@@ -176,57 +181,31 @@ if (isset($_POST["search"])) {
                     borderWidth: 0,
             dataLabels: {
                         enabled: true,
-                format: '{point.y:.1f}%'
+                format: '{point.y:.1f}'
             }
         }
             },
 
         tooltip: {
                 headerFormat: '<span style=\"font-size:11px\">{series.name}</span><br>',
-        pointFormat: '<span style=\"color:{point.color}\">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+        pointFormat: '<span style=\"color:{point.color}\">{point.name}</span>: <b>{point.y:.2f}</b> theses<br/>'
     },
 
         series: [
         {
-            name: \"Browsers\",
+            name: \"Année\",
             colorByPoint: true,
-            data: [
-                {
-                    name: \"Chrome\",
-                    y: 62.74,
-                    drilldown: \"Chrome\"
-                },
-                {
-                    name: \"Firefox\",
-                    y: 10.57,
-                    drilldown: \"Firefox\"
-                },
-                {
-                    name: \"Internet Explorer\",
-                    y: 7.23,
-                    drilldown: \"Internet Explorer\"
-                },
-                {
-                    name: \"Safari\",
-                    y: 5.58,
-                    drilldown: \"Safari\"
-                },
-                {
-                    name: \"Edge\",
-                    y: 4.02,
-                    drilldown: \"Edge\"
-                },
-                {
-                    name: \"Opera\",
-                    y: 1.92,
-                    drilldown: \"Opera\"
-                },
-                {
-                    name: \"Other\",
-                    y: 7.62,
-                    drilldown: null
+            data: [";
+                for ($i=0;$i<sizeof($Year)-1;$i++) {
+                    echo "{
+                        name : \"$Year[$i]\",
+                        y: $Theses[$i],
+                        drilldown: null
+                    },";
                 }
-            ]
+            echo "{name : \"".$Year[sizeof($Year)-1]."\",
+                    y:".$Theses[sizeof($Year)-1].",
+                    drilldown: null}]
         }
     ]
     }

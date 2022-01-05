@@ -140,71 +140,8 @@ span {
     height: 50px;
 }
 
-/* For phone with small width */
-@media (max-width: 400px) {
-    .barre_accueil {
-        background: #e7e7e7;
-        padding: 2rem;
-    }
-
-    .conteneur_accueil {
-        float: right;
-        margin: -1rem 0 0 10rem;
-    }
-
-    .logo {
-        width: 20rem;
-        height: 7rem;
-        margin: 1rem 0 0 2rem;
-    }
-
-    .search_bar {
-        width: 20rem;
-        height: 2.5rem;
-    }
-
-    .btn_rechercher {
-        height: 2.5rem;
-        width: 7rem;
-        margin: 1rem 0 0 0;
-    }
-}
-
-/* For phone with width higher than 400px*/
-@media (min-width: 401px) and (max-width: 599px) {
-    .barre_accueil {
-        background: #e7e7e7;
-        padding: 2rem;
-    }
-
-    .conteneur_accueil {
-        float: right;
-        margin: -1rem 0 0 10rem;
-    }
-
-    .logo {
-        width: 20rem;
-        height: 7rem;
-        margin: 0.5rem 0 0 3rem;
-    }
-
-    .search_bar {
-        width: 22rem;
-        height: 2.5rem;
-    }
-
-    .btn_rechercher {
-        height: 2.5rem;
-        width: 7rem;
-        margin: 1rem 0 0 0;
-    }
-}
-
-/* A Modifier */
-
-
-/* Pour tablette */
-/*@media (min-width: 600px) and (max-width: 1388px) {
+/* Pour PC */
+@media (min-height: 1280px) {
     .barre_accueil {
         background: #e7e7e7;
         padding: 3rem;
@@ -212,18 +149,8 @@ span {
 
     .logo {
         height: 15rem;
-        margin: 0 0 0 0;
+        margin: 0 0 0 50rem;
     }
-
-    .search_bar {
-        width: 45rem;
-        height: 3rem;
-    }
-
-
-    .btn_rechercher {
-        height: 4rem;
-    }
-}*/
+}
 
 
