@@ -1,28 +1,7 @@
 <?php
 if (!empty($_POST)) {
-    echo "<!DOCTYPE html>
-    <html lang=\"fr\">
-    <head>
-        <meta charset=\"UTF-8\">
-        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0\"/>
-        <link rel=\"stylesheet\" href=\"css/recherche_search.css\">
-        <script src=\"https://code.highcharts.com/highcharts.js\"></script>
-        <script src=\"https://code.highcharts.com/modules/data.js\"></script>
-        <script src=\"https://code.highcharts.com/modules/drilldown.js\"></script>
-        <script src=\"https://code.highcharts.com/modules/exporting.js\"></script>
-        <script src=\"https://code.highcharts.com/modules/export-data.js\"></script>
-        <script src=\"https://code.highcharts.com/modules/accessibility.js\"></script>
-        <title>Theses</title>
-    </head>
-    <body>
-        <div>
-            <a href='index.html' title='Page accueil'>
-                <img src=\"img/newLogo.png\" class=\"logo\" alt='logo'/>
-            </a>
-            <form action=\"recherche.php\" name=\"search\" method=\"post\" class=\"search\">
-                <div>
-                    <input type=\"text\" name=\"search\"  class=\"search_bar\" placeholder=\"".$_POST['search']."\">
-                    <button type=\"submit\" class=\"btn_rechercher\">Rechercher</button>
+    echo "" .$_POST['search']."\">
+                    <button type=\"submit\" class=\"btn_rechercher\">Rechercher<span></span></button>
                 </div>
             </form>
         </div>";
@@ -134,7 +113,7 @@ if (isset($_POST["search"])) {
                                             y:".$countPc.",res :".$countResOther."}";
                         }
                         else {
-                            for ($i = 0; $i <$lineAllDisc['cA'];$i++) {
+                            for ($i = 0; $i <$lineAllDisc['cA']-1;$i++) {
                                 echo "{ name: \"".$tabdiscipline[$i]."\",
                                             y:".$tabcount[$i]*100/$lineAllDisc['cA'].",res :".$tabcount[$i]."},";
                             }

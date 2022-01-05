@@ -24,8 +24,41 @@
     border-radius: 1em;
     color: white;
     height: 2rem;
+    padding-right: 10px;
 }
 
+.btn_rechercher span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.btn_rechercher span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    height: 3rem;
+    top: 0;
+    right: -100px;
+    transition: 0.5s;
+}
+
+.btn_rechercher:hover span {
+    padding-right: 20px;
+}
+
+.btn_rechercher:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+span {
+    font-size: 25px;
+    top: -21.5px;
+    left: 5px;
+    right: 3px;
+}
 .link {
     color: #0b5db0;
     text-decoration: none;
