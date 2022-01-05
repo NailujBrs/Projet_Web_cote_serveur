@@ -143,7 +143,7 @@ if (isset($_POST["search"])) {
                         echo "]
                     }]
                    });</script>";
-            $sqlGraph2 = "SELECT YEAR(`publication_date`) as y , COUNT(`id_these`) as c FROM `Theses` WHERE `title` LIKE :mot OR `author` LIKE :mot GROUP BY YEAR(`publication_dat e`) ORDER BY YEAR(`publication_date`)";
+            $sqlGraph2 = "SELECT YEAR(`publication_date`) as y , COUNT(`id_these`) as c FROM `Theses` WHERE `title` LIKE :mot OR `author` LIKE :mot GROUP BY YEAR(`publication_date`) ORDER BY YEAR(`publication_date`)";
             $requestGraph2 = $db->prepare($sqlGraph2);
             $requestGraph2->bindParam('mot',$mot,PDO::PARAM_STR,500);
             $requestGraph2->execute();
