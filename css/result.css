@@ -198,9 +198,15 @@ span {
 }
 
 /* Carte */
+.
 #carte {
     height: 400px;
     margin: 5px 0 0 0;
+}
+
+#carteInf {
+    height: 400px;
+    margin-top:  100px;
 }
 
 .loading {

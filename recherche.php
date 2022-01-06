@@ -43,16 +43,18 @@ ini_set("memory_limit","204M");
 if (isset($_POST["search"])) {
     if (!empty($_POST['search']) AND $_POST['search']!=" ") {
         $mot = "%".$_POST["search"]."%";
-        $sql = "SELECT id_these,title,accesibility FROM Theses WHERE title LIKE :mot OR author LIKE :mot";
+        $sql = "SELECT id_these,title,accesibility,id_establishment FROM Theses WHERE title LIKE :mot OR author LIKE :mot";
         $request = $db->prepare($sql);
 
         $request->bindParam('mot',$mot,PDO::PARAM_STR,500);
 
         $request->execute();
 
+        $id_eta = array();
         if ($request->rowCount() > 0) {
             echo "<div class='right'><div class='resultat'><ul>";
             while ($line = $request->fetch()) {
+                array_push($id_eta,$line['id_establishment']);
                 if ($line['accesibility'] == 'oui') {
                     echo "<li class='titre'>
                             <a href='https://theses.fr/".$line['id_these']."' target='_blank' class='link'>".$line['title']."</a>
@@ -65,8 +67,7 @@ if (isset($_POST["search"])) {
                 }
             }
             echo "</ul></div>
-            
-            <div id='carte'></div>
+                    <div id='carte'></div>  
             <script>
             // Initialize the chart
             Highcharts.mapChart('carte', {
@@ -75,7 +76,7 @@ if (isset($_POST["search"])) {
                     map: 'countries/fr/fr-all'
                 },  
                 title: {
-                    text: 'Highmaps basic lat/lon demo'
+                    text: 'Carte des établissements'
                 },
             
                 mapNavigation: {
@@ -84,7 +85,7 @@ if (isset($_POST["search"])) {
             
                 tooltip: {
                     headerFormat: '',
-                    pointFormat: '<b>{point.name}</b><br>Lat: {point.lat}, Lon: {point.lon}'
+                    pointFormat: '<b>{point.nom}</b>'
                 },
             
                 series: [{
@@ -103,53 +104,26 @@ if (isset($_POST["search"])) {
                     // Specify points using lat/lon
                     type: 'mappoint',
                     name: 'Cities',
-                    color: 'black',
-                    data: [{
-                        name: 'London',
-                        lat: 41.507222,
-                        lon: -0.1275
-                    }, {
-                        name: 'Birmingham',
-                        lat: 42.483056,
-                        lon: -1.893611
-                    }, {
-                        name: 'Leeds',
-                        lat: 43.799722,
-                        lon: -1.549167
-                    }, {
-                        name: 'Glasgow',
-                        lat: 45.858,
-                        lon: -3.259
-                    }, {
-                        name: 'Sheffield',
-                        lat: 43.383611,
-                        lon: -1.466944
-                    }, {
-                        name: 'Liverpool',
-                        lat: 43.4,
-                        lon: -3
-                    }, {
-                        name: 'Bristol',
-                        lat: 41.45,
-                        lon: -2.583333
-                    }, {
-                        name: 'Belfast',
-                        lat: 44.597,
-                        lon: -5.93
-                    }, {
-                        name: 'Lerwick',
-                        lat: 40.155,
-                        lon: -1.145,
-                        dataLabels: {
-                            align: 'left',
-                            x: 5,
-                            verticalAlign: 'middle'
+                    color: 'dodgerblue',
+                    data: [";
+
+                    $sql_eta = "SELECT * FROM Map;";
+                    $request = $db->query($sql_eta);
+
+                    while ($line_map = $request->fetch()) {
+                        if (in_array($line_map['id_establishment'],$id_eta)) {
+                            echo "{
+                            nom : \"".$line_map['nom']."\",
+                            lat:".$line_map['la'].",
+                            lon:".$line_map['lo']."
+                        },";
                         }
-                    }]
+                    }
+                    echo "]
                 }]
             });
-            </script>
-            </div>
+            </script>";
+            echo "</div>
             ";
 
             $sqlGrap1 = "SELECT DISTINCT(discipline) as d,COUNT(id_these) as c FROM Theses WHERE title LIKE :mot OR author LIKE :mot GROUP BY discipline ORDER BY Count(id_these) DESC LIMIT 10";
