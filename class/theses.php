@@ -346,11 +346,11 @@ class theses
         $request->bindParam('establishment', $this->establishment, PDO::PARAM_STR, 150);
         $request->bindParam('id_establishment', $this->establishment_id, PDO::PARAM_STR, 40);
         $request->bindParam('discipline', $this->discipline, PDO::PARAM_STR, 150);
-        $request->bindParam('status', $this->status, PDO::PARAM_BOOL);
+        $request->bindParam('status', $this->status, PDO::PARAM_STR,10);
         $request->bindParam('inscription_date', $this->inscription_date, PDO::PARAM_STR, 10);
         $request->bindParam('defense_date', $this->defense_date, PDO::PARAM_STR, 10);
         $request->bindParam('lang', $this->lang, PDO::PARAM_STR, 10);
-        $request->bindParam('accesibility', $this->accessibility, PDO::PARAM_BOOL);
+        $request->bindParam('accesibility', $this->accessibility, PDO::PARAM_STR,3);
         $request->bindParam('publication_date', $this->publication_date, PDO::PARAM_STR, 10);
         $request->bindParam('maj_date', $this->maj_date, PDO::PARAM_STR, 10);
 
