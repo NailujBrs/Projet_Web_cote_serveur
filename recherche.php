@@ -205,7 +205,7 @@ if (isset($_POST["search"])) {
                         text: 'Top des Disciplines<br><p style=\"font-size:10px\">Nombre de résultats : ".$lineAllDisc['cA']."</p>'
                     },
                     tooltip: {
-                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b><br><b>{point.res}</b> résultats'
+                        pointFormat: '{series.name} <b>{point.percentage:.1f}%</b><br><b>{point.res}</b> résultats'
                     },
                     accessibility: {
                         point: {
@@ -224,7 +224,7 @@ if (isset($_POST["search"])) {
                         }
                     },
                     series: [{
-                        name: 'Discipline',
+                        name: ' ',
                         data: [";
                         if ($lineAllDisc['cA'] > 9) {
                             for ($i = 0; $i <= 9; $i++) {
@@ -293,7 +293,7 @@ if (isset($_POST["search"])) {
 
         series: [
         {
-            name: \"Année\",
+            name: \" \",
             colorByPoint: true,
             data: [";
                 for ($i=0;$i<sizeof($Year)-1;$i++) {
