@@ -12,6 +12,12 @@ if (!empty($_POST)) {
         <script src=\"https://code.highcharts.com/modules/exporting.js\"></script>
         <script src=\"https://code.highcharts.com/modules/export-data.js\"></script>
         <script src=\"https://code.highcharts.com/modules/accessibility.js\"></script>
+        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.6/proj4.js\"></script>
+        <script src=\"https://code.highcharts.com/maps/highmaps.js\"></script>
+        <script src=\"https://code.highcharts.com/maps/modules/exporting.js\"></script>
+        <script src=\"https://code.highcharts.com/maps/modules/offline-exporting.js\"></script>
+        <script src=\"https://code.highcharts.com/mapdata/countries/fr/fr-all.js\"></script>
+        
         <title>Theses</title>
     </head>
     <body>
@@ -50,7 +56,92 @@ if (isset($_POST["search"])) {
             while ($line = $request->fetch()) {
                 echo "<li class='titre'><a href='https://theses.fr/".$line['id_these']."' target='_blank' class='link'>".$line['title']."<a></li><br>";
             }
-            echo "</ul></div></div>";
+            echo "</ul></div>
+            <div id=\"carte\"></div>
+            <script>
+            // Initialize the chart
+            Highcharts.mapChart('carte', {
+            
+                chart: {
+                    map: 'countries/fr/fr-all'
+                },
+            
+                title: {
+                    text: 'Highmaps basic lat/lon demo'
+                },
+            
+                mapNavigation: {
+                    enabled: true
+                },
+            
+                tooltip: {
+                    headerFormat: '',
+                    pointFormat: '<b>{point.name}</b><br>Lat: {point.lat}, Lon: {point.lon}'
+                },
+            
+                series: [{
+                    // Use the gb-all map with no data as a basemap
+                    name: 'Basemap',
+                    borderColor: '#A0A0A0',
+                    nullColor: 'rgba(200, 200, 200, 0.3)',
+                    showInLegend: false
+                }, {
+                    name: 'Separators',
+                    type: 'mapline',
+                    nullColor: '#707070',
+                    showInLegend: false,
+                    enableMouseTracking: false
+                }, {
+                    // Specify points using lat/lon
+                    type: 'mappoint',
+                    name: 'Cities',
+                    color: Highcharts.getOptions().colors[1],
+                    data: [{
+                        name: 'London',
+                        lat: 51.507222,
+                        lon: -0.1275
+                    }, {
+                        name: 'Birmingham',
+                        lat: 52.483056,
+                        lon: -1.893611
+                    }, {
+                        name: 'Leeds',
+                        lat: 53.799722,
+                        lon: -1.549167
+                    }, {
+                        name: 'Glasgow',
+                        lat: 55.858,
+                        lon: -4.259
+                    }, {
+                        name: 'Sheffield',
+                        lat: 53.383611,
+                        lon: -1.466944
+                    }, {
+                        name: 'Liverpool',
+                        lat: 53.4,
+                        lon: -3
+                    }, {
+                        name: 'Bristol',
+                        lat: 51.45,
+                        lon: -2.583333
+                    }, {
+                        name: 'Belfast',
+                        lat: 54.597,
+                        lon: -5.93
+                    }, {
+                        name: 'Lerwick',
+                        lat: 60.155,
+                        lon: -1.145,
+                        dataLabels: {
+                            align: 'left',
+                            x: 5,
+                            verticalAlign: 'middle'
+                        }
+                    }]
+                }]
+            });
+            </script>
+            </div>";
 
             $sqlGrap1 = "SELECT DISTINCT(discipline) as d,COUNT(id_these) as c FROM Theses WHERE title LIKE :mot OR author LIKE :mot GROUP BY discipline ORDER BY Count(id_these) DESC LIMIT 10";
             $requestGrap1 = $db->prepare($sqlGrap1);

@@ -151,7 +151,7 @@ span {
 }
 
 #Graph2 {
-    height: 200px;
+    height: 400px;
     margin: 20px 0 0 0;
 }
 
@@ -191,19 +191,19 @@ span {
     background: #f1f7ff;
 }
 
-.footer {
-    position:absolute;
-    bottom:5px;
-    width:100%;
-    padding-top:50px;
-    height:50px;
-    text-align: center;
+#carte {
+    height: 680px;
+    min-width: 310px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.git {
-    width: 50px;
-    height: 50px;
+.loading {
+    margin-top: 10em;
+    text-align: center;
+    color: gray;
 }
+
 
 /* Pour PC*/
 @media (min-height: 1280px){
