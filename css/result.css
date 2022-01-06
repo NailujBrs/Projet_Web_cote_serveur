@@ -4,7 +4,7 @@
 .logo {
     width: 16rem;
     height: 6rem;
-    margin: 0 0 0 39rem;
+    margin: 0 0 0 40%;
 }
 
 .search {
@@ -207,18 +207,4 @@ span {
     margin-top: 10em;
     text-align: center;
     color: gray;
-}
-
-
-/* Pour PC*/
-@media (min-height: 1280px){
-    .logo {
-        width: 18rem;
-        height: 6rem;
-        margin: 0.5rem 0 0 40rem;
-    }
-
-    .search {
-        margin-bottom: 2rem;
-    }
 }
