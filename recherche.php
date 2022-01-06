@@ -6,19 +6,18 @@ if (!empty($_POST)) {
         <meta charset=\"UTF-8\">
         <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0\"/>
         <link rel=\"stylesheet\" href=\"css/result.css\">
-        <script src=\"https://code.highcharts.com/highcharts.js\"></script>
-        <script src=\"https://code.highcharts.com/modules/data.js\"></script>
-        <script src=\"https://code.highcharts.com/modules/drilldown.js\"></script>
-        <script src=\"https://code.highcharts.com/modules/exporting.js\"></script>
-        <script src=\"https://code.highcharts.com/modules/export-data.js\"></script>
-        <script src=\"https://code.highcharts.com/modules/accessibility.js\"></script>
         <script src=\"https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.6/proj4.js\"></script>
         <script src=\"https://code.highcharts.com/maps/highmaps.js\"></script>
         <script src=\"https://code.highcharts.com/maps/modules/exporting.js\"></script>
         <script src=\"https://code.highcharts.com/maps/modules/offline-exporting.js\"></script>
         <script src=\"https://code.highcharts.com/mapdata/countries/fr/fr-all.js\"></script>
+        <script src=\"https://code.highcharts.com/modules/data.js\"></script>
+        <script src=\"https://code.highcharts.com/modules/drilldown.js\"></script>
+        <script src=\"https://code.highcharts.com/modules/exporting.js\"></script>
+        <script src=\"https://code.highcharts.com/modules/export-data.js\"></script>
+        <script src=\"https://code.highcharts.com/modules/accessibility.js\"></script>
         
-        <title>Theses</title>
+        <title>Theses</title>\
     </head>
     <body>
         <div>
@@ -44,7 +43,7 @@ ini_set("memory_limit","204M");
 if (isset($_POST["search"])) {
     if (!empty($_POST['search']) AND $_POST['search']!=" ") {
         $mot = "%".$_POST["search"]."%";
-        $sql = "SELECT id_these,title FROM Theses WHERE title LIKE :mot OR author LIKE :mot";
+        $sql = "SELECT id_these,title,accesibility FROM Theses WHERE title LIKE :mot OR author LIKE :mot";
         $request = $db->prepare($sql);
 
         $request->bindParam('mot',$mot,PDO::PARAM_STR,500);
@@ -54,18 +53,27 @@ if (isset($_POST["search"])) {
         if ($request->rowCount() > 0) {
             echo "<div class='right'><div class='resultat'><ul>";
             while ($line = $request->fetch()) {
-                echo "<li class='titre'><a href='https://theses.fr/".$line['id_these']."' target='_blank' class='link'>".$line['title']."<a></li><br>";
+                if ($line['accesibility'] == 'oui') {
+                    echo "<li class='titre'>
+                            <a href='https://theses.fr/".$line['id_these']."' target='_blank' class='link'>".$line['title']."</a>
+                            <a href='https://theses.fr/".$line['id_these']."/document' target='_blank'>
+                                <img src='img/tel.png' alt='Téléchargement' class='telechargement'>
+                            </a>
+                            </li><br>";
+                } else {
+                    echo "<li class='titre'><a href='https://theses.fr/".$line['id_these']."' target='_blank' class='link'>".$line['title']."</a></li><br>";
+                }
             }
             echo "</ul></div>
-            <div id=\"carte\"></div>
+            
+            <div id='carte'></div>
             <script>
             // Initialize the chart
             Highcharts.mapChart('carte', {
             
                 chart: {
                     map: 'countries/fr/fr-all'
-                },
-            
+                },  
                 title: {
                     text: 'Highmaps basic lat/lon demo'
                 },
@@ -95,42 +103,42 @@ if (isset($_POST["search"])) {
                     // Specify points using lat/lon
                     type: 'mappoint',
                     name: 'Cities',
-                    color: Highcharts.getOptions().colors[1],
+                    color: 'black',
                     data: [{
                         name: 'London',
-                        lat: 51.507222,
+                        lat: 41.507222,
                         lon: -0.1275
                     }, {
                         name: 'Birmingham',
-                        lat: 52.483056,
+                        lat: 42.483056,
                         lon: -1.893611
                     }, {
                         name: 'Leeds',
-                        lat: 53.799722,
+                        lat: 43.799722,
                         lon: -1.549167
                     }, {
                         name: 'Glasgow',
-                        lat: 55.858,
-                        lon: -4.259
+                        lat: 45.858,
+                        lon: -3.259
                     }, {
                         name: 'Sheffield',
-                        lat: 53.383611,
+                        lat: 43.383611,
                         lon: -1.466944
                     }, {
                         name: 'Liverpool',
-                        lat: 53.4,
+                        lat: 43.4,
                         lon: -3
                     }, {
                         name: 'Bristol',
-                        lat: 51.45,
+                        lat: 41.45,
                         lon: -2.583333
                     }, {
                         name: 'Belfast',
-                        lat: 54.597,
+                        lat: 44.597,
                         lon: -5.93
                     }, {
                         name: 'Lerwick',
-                        lat: 60.155,
+                        lat: 40.155,
                         lon: -1.145,
                         dataLabels: {
                             align: 'left',
@@ -141,7 +149,8 @@ if (isset($_POST["search"])) {
                 }]
             });
             </script>
-            </div>";
+            </div>
+            ";
 
             $sqlGrap1 = "SELECT DISTINCT(discipline) as d,COUNT(id_these) as c FROM Theses WHERE title LIKE :mot OR author LIKE :mot GROUP BY discipline ORDER BY Count(id_these) DESC LIMIT 10";
             $requestGrap1 = $db->prepare($sqlGrap1);
@@ -250,12 +259,12 @@ if (isset($_POST["search"])) {
                   </figure>
                   <script>
             Highcharts.chart('Graph2', {
-    chart: {
-                type: 'column'
-    },
-    title: {
-                text: 'These par année <br><p style=\"font-size:10px\">Nombre de résultats : ".$lineAllDisc['cA']."</p>'
-    },
+        chart: {
+                    type: 'column'
+        },
+        title: {
+                    text: 'These par année <br><p style=\"font-size:10px\">Nombre de résultats : ".$lineAllDisc['cA']."</p>'
+        },
         accessibility: {
                 announceNewData: { 
                     enabled: true
@@ -263,24 +272,24 @@ if (isset($_POST["search"])) {
             },
         xAxis: {
                 type: 'category'
-    },
+        },
         legend: {
                 enabled: false
-    },
+        },
         plotOptions: {
                 series: {
                     borderWidth: 0,
             dataLabels: {
                         enabled: true,
-                format: '{point.y:.1f}'
+                format: '{point.y}'
             }
         }
             },
 
         tooltip: {
                 headerFormat: '<span style=\"font-size:11px\">{series.name}</span><br>',
-        pointFormat: '<span style=\"color:{point.color}\">{point.name}</span>: <b>{point.y:.2f}</b> theses<br/>'
-    },
+        pointFormat: '<span style=\"color:{point.color}\">{point.name}</span>: <b>{point.y}</b> theses<br/>'
+        },
 
         series: [
         {
