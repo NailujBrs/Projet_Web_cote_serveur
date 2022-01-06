@@ -214,3 +214,18 @@ span {
     text-align: center;
     color: gray;
 }
+
+.footer {
+    position:absolute;
+    bottom:-230px;
+    width:100%;
+    padding-top:50px;
+    height:50px;
+    text-align: center;
+}
+
+.git {
+    width: 50px;
+    height: 50px;
+}
+

@@ -283,7 +283,10 @@ if (isset($_POST["search"])) {
         }
     ]
     }
-);</script></div>";
+);</script></div>
+<footer class=\"footer\">
+        <a href=\"https://github.com/NailujBrs/Projet_Web_cote_serveur\" target='_blank' title=\"GitHub\"><img src=\"img/git.png\" alt=\"Logo GitHub\" class=\"git\"/></a>
+</footer>";
         }
         else {
             echo "<p style='text-align: center'>Il n'y aucun résultat pour votre recherche...</p>";
