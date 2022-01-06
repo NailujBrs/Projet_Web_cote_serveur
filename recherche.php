@@ -41,7 +41,7 @@ $db = $cnx->getCnx();
 ini_set("memory_limit","204M");
 
 if (isset($_POST["search"])) {
-    if (!empty($_POST['search']) AND $_POST['search']!=" ") {
+    if (!empty($_POST['search']) AND trim($_POST['search'])!="") {
         $mot = "%".$_POST["search"]."%";
         $sql = "SELECT id_these,title,accesibility,id_establishment FROM Theses WHERE title LIKE :mot OR author LIKE :mot";
         $request = $db->prepare($sql);
@@ -283,10 +283,10 @@ if (isset($_POST["search"])) {
         }
     ]
     }
-);</script></div>
+);</script>
 <div class=\"footer\">
         <a href=\"https://github.com/NailujBrs/Projet_Web_cote_serveur\" target='_blank' title=\"GitHub\"><img src=\"img/git.png\" alt=\"Logo GitHub\" class=\"git\"/></a>
-</div>";
+</div></div>";
         }
         else {
             echo "<p style='text-align: center'>Il n'y aucun résultat pour votre recherche...</p>";
