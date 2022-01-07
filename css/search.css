@@ -69,10 +69,12 @@
     transform: scale(1.15);
 }
 
+.img_logo {
+    margin-left: 30%;
+}
 .logo {
     width: 35rem;
     height: 13rem;
-    margin: 0.5rem 0 0 28.5%;
 }
 
 .search {
@@ -137,6 +139,16 @@ span {
 .git {
     width: 50px;
     height: 50px;
+}
+
+#exact {
+    margin-top:2%;
+    margin-left: -3%;
+}
+
+#text_exact {
+    margin-left: 5px;
+    font-size: 18px;
 }
 
 

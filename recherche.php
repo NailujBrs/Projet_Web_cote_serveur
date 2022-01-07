@@ -29,6 +29,9 @@ if (!empty($_POST)) {
                     <input type=\"text\" name=\"search\"  class=\"search_bar\" placeholder=\"".$_POST['search']."\">
                     <button type=\"submit\" class=\"btn_rechercher\">Rechercher<span></span></button>
                 </div>
+                <div>
+                    <input type=\"checkbox\" name=\"exact\" id=\"exact\"><label for=\"exact\" id=\"text_exact\">Rechercher exactement ce mot</label>
+                </div>
             </form>
         </div>
         ";
@@ -42,7 +45,11 @@ ini_set("memory_limit","204M");
 
 if (isset($_POST["search"])) {
     if (!empty($_POST['search']) AND trim($_POST['search'])!="") {
-        $mot = "%".$_POST["search"]."%";
+        if (isset($_POST['exact'])) {
+            $mot = "% ".$_POST["search"]." %";
+        } else {
+            $mot = "%".$_POST["search"]."%";
+        }
         $sql = "SELECT id_these,title,accesibility,id_establishment FROM Theses WHERE title LIKE :mot OR author LIKE :mot";
         $request = $db->prepare($sql);
 
@@ -289,11 +296,11 @@ if (isset($_POST["search"])) {
 </div></div>";
         }
         else {
-            echo "<p style='text-align: center'>Il n'y aucun résultat pour votre recherche...</p>";
+            echo "<p style='text-align: center; margin-left: -3.5%'>Il n'y aucun résultat pour votre recherche...</p>";
         }
     }
     else {
-        echo "<p style='text-align: center'>Votre recherche ne contient aucun mot</p>";
+        echo "<p style='text-align: center;margin-left: -3.5%'>Votre recherche ne contient aucun mot</p>";
     }
 }
 else {

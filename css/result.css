@@ -226,3 +226,13 @@ span {
     height: 50px;
 }
 
+#exact {
+    margin-top:1%;
+    margin-left: -3.5%;
+}
+
+#text_exact {
+    margin-left: 5px;
+    font-size: 13px;
+}
+
